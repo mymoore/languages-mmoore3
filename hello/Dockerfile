@@ -1,14 +1,17 @@
-#Use official GCC image as a base image
-FROM gcc:latest
+# Use Alpine Linux as the base image
+FROM alpine:3
 
-#Set the working directory in the container
-WORKDIR /usr/src/app
+# Install gcc, g++, and make, along with required libraries
+RUN apk add --no-cache gcc g++ make libc-dev
 
-#Copy the C++ source cose to the container
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the C++ source code to the container
 COPY hello.cpp .
 
 # Compile the C++ program
 RUN g++ -o hello.exe hello.cpp
 
-#Command to run the compiled program
+# Command to run the compiled program
 CMD ["./hello.exe"]
