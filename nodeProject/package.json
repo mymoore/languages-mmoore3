@@ -1,0 +1,32 @@
+{
+    "name": "scramble-app",
+    "version": "1.0.0",
+    "description": "A multi-user word unscrambling game using Node.js and PostgreSQL.",
+    "main": "index.js",
+    "scripts": {
+        "prestart": "npm install",
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "echo \"No tests specified\" && exit 0"
+    },
+    "author": "Mykaela",
+    "license": "MIT",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "pg": "^8.13.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    },
+    "engines": {
+        "node": "18.x"
+    },
+    "keywords": [
+        "word-game",
+        "nodejs",
+        "postgresql",
+        "express"
+    ]
+}
