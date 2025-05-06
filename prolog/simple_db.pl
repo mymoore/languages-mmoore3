@@ -3,24 +3,25 @@
 
 % --- Facts ---
 % parent(Parent, Child).
-parent(Lynette, Heather).
-parent(Kevin, Mykaela).
-parent(Kevin, Sawyer).
-parent(Heather, Sawyer).
-parent(Heather, Mykaela)
-parent(Lynette, Chelsey).
-parent(Lynette, Corey).
-parent(Chelsey, Wesley).
+parent(lynette, heather).
+parent(kevin, mykaela).
+parent(kevin, sawyer).
+parent(heather, Sawyer).
+parent(heather, mykaela)
+parent(lynette, chelsey).
+parent(lynette, corey).
+parent(chelsey, wesley).
 
 % male(Name) / female(Name).
-male(Kevin).
-male(Sawyer).
-male(Corey).
-male(Wesley).
+male(kevin).
+male(sawyer).
+male(corey).
+male(wesley).
 
-female(Lynette).
-female(Mykaela).
-female(Chelsey).
+female(lynette).
+female(mykaela).
+female(chelsey).
+female(heather)
 
 % --- Rules ---
 
@@ -58,9 +59,9 @@ aunt_or_uncle(AU, N) :-
     sibling(AU, P).
 
 % --- Sample Queries ---
-% ?‑ mother(Lynette, Heather).
-% ?‑ father(Kevin, Sawyer).
-% ?‑ sibling(Mykaela, Sawyer).
-% ?‑ grandparent(Lynette, Wesley).
-% ?‑ ancestor(Corey, Wesley).
-% ?‑ aunt_or_uncle(Chelsey, Mykaela).
+% ?‑ mother(lynette, heather).
+% ?‑ father(kevin, sawyer).
+% ?‑ sibling(mykaela, sawyer).
+% ?‑ grandparent(lynette, wesley).
+% ?‑ ancestor(corey, wesley).
+% ?‑ aunt_or_uncle(chelsey, mykaela).
