@@ -10,61 +10,40 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
-// Reuse your data model
-data class Task(var description: String, var isDone: Boolean = false)
-
 @Composable
 @Preview
 fun TodoApp() {
-    var newTaskText by remember { mutableStateOf("") }
-    val tasks = remember { mutableStateListOf<Task>() }
+    var newText by remember { mutableStateOf("") }
+    val todoList = remember { TodoList() }
 
     MaterialTheme {
       Column(modifier = Modifier.padding(16.dp)) {
-        // Input row
         Row(verticalAlignment = Alignment.CenterVertically) {
           TextField(
-            value = newTaskText,
-            onValueChange = { newTaskText = it },
+            value = newText,
+            onValueChange = { newText = it },
             label = { Text("New task") },
             modifier = Modifier.weight(1f)
           )
           Spacer(Modifier.width(8.dp))
           Button(onClick = {
-            if (newTaskText.isNotBlank()) {
-              tasks.add(Task(newTaskText))
-              newTaskText = ""
+            if (newText.isNotBlank()) {
+              todoList.addTask(newText)
+              newText = ""
             }
-          }) {
-            Text("Add")
-          }
+          }) { Text("Add") }
         }
 
         Spacer(Modifier.height(16.dp))
-
-        // Task list
-        if (tasks.isEmpty()) {
-          Text("No tasks yet!", style = MaterialTheme.typography.subtitle1)
-        } else {
-          LazyColumn {
-            itemsIndexed(tasks) { idx, task ->
-              Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
-              ) {
-                Checkbox(
-                  checked = task.isDone,
-                  onCheckedChange = { checked -> task.isDone = checked }
-                )
-                Spacer(Modifier.width(8.dp))
-                Text(
-                  task.description,
-                  style = if (task.isDone)
-                    MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.onSurface.copy(alpha = 0.4f))
-                  else
-                    MaterialTheme.typography.body1
-                )
-              }
+        LazyColumn {
+          itemsIndexed(todoList.allTasks()) { idx, task ->
+            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+              Checkbox(
+                checked = task.isDone,
+                onCheckedChange = { todoList.toggleDone(idx) }
+              )
+              Spacer(Modifier.width(8.dp))
+              Text(task.description)
             }
           }
         }
@@ -73,7 +52,7 @@ fun TodoApp() {
 }
 
 fun main() = application {
-  Window(onCloseRequest = ::exitApplication, title = "Kotlin To‑Do List") {
+  Window(onCloseRequest = ::exitApplication, title = "To‑Do List") {
     TodoApp()
   }
 }

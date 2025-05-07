@@ -3,8 +3,8 @@
 # —— Config ——  
 KOTLINC       := kotlinc
 KOTLIN_RUN    := kotlin
-SOURCE        := main.kt
-JAR           := main.jar
+SOURCE        := finalproject.kt
+JAR           := finalproject.jar
 JSONFILE      := data.json
 
 # —— Default target ——  
