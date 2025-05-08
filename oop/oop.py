@@ -1,35 +1,35 @@
-class Animal:
+class WaterBottle:
     """Top of the diamond."""
     def __init__(self):
-        print("Animal.__init__")
-        self.belly = True
+        # print("WaterBottle.__init__")
+        self.portable_cup = True
 
-    def has_belly(self):
-        return self.belly
+    def portable_cup(self):
+        return self.portable_cup
 
 
-class Bird(Animal):
+class Tumbler(WaterBottle):
     """One branch of the diamond."""
     def __init__(self):
-        print("Bird.__init__")
+        # print("Owala.__init__")
         super().__init__()
 
 
-class Mammal(Animal):
+class Thermos(WaterBottle):
     """The other branch of the diamond."""
     def __init__(self):
-        print("Mammal.__init__")
+        # print("Stanley.__init__")
         super().__init__()
 
 
-class Platypus(Bird, Mammal):
-    """Bottom of the diamond, inheriting from both Bird and Mammal."""
+class Yeti(Tumbler, Thermos):
+    """Bottom of the diamond, inheriting from both sides."""
     def __init__(self):
-        print("Platypus.__init__")
+        # print("Yeti.__init__")
         super().__init__()
 
 
 if __name__ == "__main__":
     # Instantiate and observe constructor calls
-    p = Platypus()
-    print("Does a platypus have a belly?", p.has_belly())
+    p = Yeti()
+    print("Does a Yeti transport water?", p.portable_cup)
