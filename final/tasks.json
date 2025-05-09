@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Run Curry program",
+        "type": "shell",
+        "command": "pakcs :load ${fileBasename} :eval main :quit",
+        "group": { "kind": "build", "isDefault": true }
+      }
+    ]
+  }

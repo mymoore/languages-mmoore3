@@ -6,11 +6,12 @@
 parent(lynette, heather).
 parent(kevin, mykaela).
 parent(kevin, sawyer).
-parent(heather, Sawyer).
-parent(heather, mykaela)
+parent(heather, sawyer).
+parent(heather, mykaela).
 parent(lynette, chelsey).
 parent(lynette, corey).
 parent(chelsey, wesley).
+parent(earl, lynette).
 
 % male(Name) / female(Name).
 male(kevin).
@@ -21,7 +22,7 @@ male(wesley).
 female(lynette).
 female(mykaela).
 female(chelsey).
-female(heather)
+female(heather).
 
 % --- Rules ---
 
@@ -63,5 +64,9 @@ aunt_or_uncle(AU, N) :-
 % ?‑ father(kevin, sawyer).
 % ?‑ sibling(mykaela, sawyer).
 % ?‑ grandparent(lynette, wesley).
-% ?‑ ancestor(corey, wesley).
+% ?‑ ancestor(earl, wesley).
 % ?‑ aunt_or_uncle(chelsey, mykaela).
+% --- Incorrect Ones ---
+% ?‑ mother(earl, corey).
+% ?‑ ancestor(mykaela, wesley).
+% ?‑ aunt_or_uncle(wesley, heather).
