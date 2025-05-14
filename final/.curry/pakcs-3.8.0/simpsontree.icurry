@@ -1,5 +1,6 @@
 interface simpsontree where {
 import Prelude;
+data Gender = Male | Female;
 data Person
   = Clancy_Bouvier
   | Jacqueline_Ingrid_Bouvier
@@ -16,10 +17,47 @@ data Person
   | Abbey_Simpson;
 allPersons 0 :: [Person];
 ancestor 2 :: Person -> Person -> Prelude.Bool;
+aunt_or_uncle 2 :: Person -> Person -> Prelude.Bool;
+auntsOf 1 :: Person -> [Person];
 children 1 :: Person -> [Person];
-main 0 :: Prelude.IO ();
+father 2 :: Person -> Person -> Prelude.Bool;
+fathersOf 1 :: Person -> [Person];
+female 1 :: Person -> Prelude.Bool;
+genderFacts 0 :: [(Person, Gender)];
+grandparent 2 :: Person -> Person -> Prelude.Bool;
+grandparentsOf 1 :: Person -> [Person];
+halfSibling 2 :: Person -> Person -> Prelude.Bool;
+halfSiblingsOf 1 :: Person -> [Person];
+lookupGender 1 :: Person -> Prelude.Maybe Gender;
+male 1 :: Person -> Prelude.Bool;
+mother 2 :: Person -> Person -> Prelude.Bool;
+mothersOf 1 :: Person -> [Person];
 parent 2 :: Person -> Person -> Prelude.Bool;
 parentFacts 0 :: [(Person, Person)];
+parentsOf 1 :: Person -> [Person];
+sibling 2 :: Person -> Person -> Prelude.Bool;
+siblingsInLaw 2 :: Person -> Person -> Prelude.Bool;
+siblingsInLawOf 1 :: Person -> [Person];
+siblingsOf 1 :: Person -> [Person];
+spouse 2 :: Person -> Person -> Prelude.Bool;
+spouseFacts 0 :: [(Person, Person)];
+spousesOf 1 :: Person -> [Person];
+stepSibling 2 :: Person -> Person -> Prelude.Bool;
+stepSiblingsOf 1 :: Person -> [Person];
+unclesOf 1 :: Person -> [Person];
+instance Prelude.Show Gender {
+  showsPrec 2
+};
+instance Prelude.Read Gender {
+  readsPrec 2
+};
+instance Prelude.Eq Gender {
+  (==) 2
+};
+instance Prelude.Data Gender {
+  (===) 2;
+  aValue 0
+};
 instance Prelude.Show Person {
   showsPrec 2
 };
@@ -31,8 +69,9 @@ instance Prelude.Data Person {
   aValue 0
 };
 hiding data Prelude.Bool;
-hiding data Prelude.IO a;
+hiding data Prelude.Maybe a;
 hiding class Prelude.Show a;
+hiding class Prelude.Read a;
 hiding class Prelude.Eq a;
 hiding class Prelude.Data a;
 instance (Prelude.Show a, Prelude.Show b, Prelude.Show c,
@@ -86,6 +125,55 @@ instance Prelude.Show Prelude.Bool {
 } {-# MODULE Prelude #-};
 instance Prelude.Show () {
   showsPrec 2
+} {-# MODULE Prelude #-};
+instance (Prelude.Read a, Prelude.Read b, Prelude.Read c,
+          Prelude.Read d, Prelude.Read e, Prelude.Read f) => Prelude.Read (a,
+                                                                           b, c, d, e, f) {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance (Prelude.Read a, Prelude.Read b, Prelude.Read c,
+          Prelude.Read d, Prelude.Read e) => Prelude.Read (a, b, c, d, e) {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance (Prelude.Read a, Prelude.Read b, Prelude.Read c,
+          Prelude.Read d) => Prelude.Read (a, b, c, d) {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance (Prelude.Read a, Prelude.Read b,
+          Prelude.Read c) => Prelude.Read (a, b, c) {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance (Prelude.Read a,
+          Prelude.Read b) => Prelude.Read (Prelude.Either a b) {
+  readsPrec 2
+} {-# MODULE Prelude #-};
+instance (Prelude.Read a, Prelude.Read b) => Prelude.Read (a, b) {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance Prelude.Read a => Prelude.Read (Prelude.Maybe a) {
+  readsPrec 2
+} {-# MODULE Prelude #-};
+instance Prelude.Read a => Prelude.Read [a] {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance Prelude.Read Prelude.Ordering {
+  readsPrec 2
+} {-# MODULE Prelude #-};
+instance Prelude.Read Prelude.Int {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance Prelude.Read Prelude.Float {
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance Prelude.Read Prelude.Char {
+  readList 1;
+  readsPrec 1
+} {-# MODULE Prelude #-};
+instance Prelude.Read Prelude.Bool {
+  readsPrec 2
+} {-# MODULE Prelude #-};
+instance Prelude.Read () {
+  readsPrec 1
 } {-# MODULE Prelude #-};
 instance (Prelude.Eq a, Prelude.Eq b, Prelude.Eq c, Prelude.Eq d,
           Prelude.Eq e, Prelude.Eq f) => Prelude.Eq (a, b, c, d, e, f) {
@@ -210,7 +298,6 @@ instance Prelude.Data () {
   (===) 2
 } {-# MODULE Prelude #-};
 hiding data Prelude.Either a b;
-hiding data Prelude.Maybe a;
 hiding data Prelude.Ordering;
 hiding data Prelude.Int;
 hiding data Prelude.IOError;
