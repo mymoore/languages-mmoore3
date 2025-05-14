@@ -235,7 +235,8 @@ halfSiblingsOf x = nub [ y | y <- allPersons, halfSibling x y ]
 
 -- | All grandparents of a person
 grandparentsOf :: Person -> [Person]
-grandparentsOf x = [ gp | gp <- allPersons, grandparent gp x ]
+grandparentsOf x = nub
+  [ gp | p  <- parentsOf x, gp <- parentsOf p ]
 
 -- | All aunts of a person (female siblings of parents)
 auntsOf :: Person -> [Person]
