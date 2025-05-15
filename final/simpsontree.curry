@@ -87,16 +87,6 @@ allPersons = [ Clancy_Bouvier, Jacqueline_Ingrid_Bouvier, Patty_Bouvier
              ]
 
 
-
-
-
-
-
-
--- | Deterministic test: is (p,c) one of the facts?
-parent :: Person -> Person -> Bool
-parent p c = (p,c) `elem` parentFacts
-
 -- | List all of a person’s children one time
 children :: Person -> [Person]
 children p = nub [c | c <- allPersons, parent p c]
@@ -122,6 +112,10 @@ male   p = lookupGender p == Just Male
 
 
 -- | True or False queries
+-- | Deterministic test: is (p,c) one of the facts?
+parent :: Person -> Person -> Bool
+parent p c = (p,c) `elem` parentFacts
+
 -- Make sure overlapping parent‐rules don’t create duplicate branches
 -- mother(M, C): M is a parent of C and M is female.
 mother :: Person -> Person -> Success
